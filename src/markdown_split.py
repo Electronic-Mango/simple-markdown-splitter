@@ -6,13 +6,13 @@ from mdformat import text
 
 def split(contents: str, *, max_length: int, format: bool = True) -> list[str]:
     contents = contents if not format else text(contents, options={"number": True})
-    chunks = safe_split_into_chunks(contents)
+    chunks = split_into_chunks(contents)
     chunks = combine_chunks_to_match_max_length(chunks, max_length)
     chunks = split_too_long_code_block_chunks(chunks, max_length)
     return chunks
 
 
-def safe_split_into_chunks(contents: str) -> list[str]:
+def split_into_chunks(contents: str) -> list[str]:
     chunks = [""]
     is_code_block = False
     for line in contents.splitlines():
@@ -34,8 +34,7 @@ def safe_split_into_chunks(contents: str) -> list[str]:
         else:
             # Regular line.
             chunks.append(line)
-    chunks = chunks if chunks[0] else chunks[1:]  # Remove leading empty chunk.
-    return chunks
+    return chunks if chunks[0] else chunks[1:]  # Remove leading empty chunk.
 
 
 def combine_chunks_to_match_max_length(chunks: list[str], max_length: int) -> list[str]:
@@ -62,8 +61,9 @@ def split_too_long_code_block_chunks(chunks: list[str], max_length: int) -> list
 
 def split_code_chunk(chunk: str, max_length: int) -> list[str]:
     new_chunks = [""]
-    syntax_str = chunk.splitlines()[0]
-    for chunk in chunk.splitlines():
+    chunk_lines = chunk.splitlines()
+    syntax_str = chunk_lines[0]
+    for chunk in chunk_lines:
         if len(new_chunks[-1]) + len(chunk) + (len(linesep) * 4) + len("```") <= max_length:
             new_chunks[-1] += chunk + linesep
         else:
