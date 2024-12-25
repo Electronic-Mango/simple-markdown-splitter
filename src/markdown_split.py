@@ -1,45 +1,43 @@
 from functools import reduce
+from re import  match
+
+from mdformat import text
 
 from chunk_parsers import *
-from common import CHUNKS_SEPARATOR
-from initial_parsers import *
-
-INITIAL_PARSERS = [
-    force_code_blocks_into_new_chunks,
-    rstrip_each_line,
-    truncate_line_separators,
-    strip_code_blocks,
-]
 
 CHUNK_PARSERS = [
-    combine_multiparagraph_chunks,
-    combine_code_blocks,
     combine_chunks_to_match_max_length,
     split_too_long_code_block_chunks,
 ]
 
-
-def main() -> None:
-    max_length = 700
-    markdown = read_file()
-    chunks = split(markdown, max_length=max_length)
-    print(CHUNKS_SEPARATOR.join(chunks))
-    print([len(chunk) for chunk in chunks])
-    print()
-
-
-def read_file() -> str:
-    with open("markdown_example.md", "r") as file:
-        return file.read()
-
-
-def split(contents: str, *, max_length: int) -> list[str]:
-    kwargs = {"max_length": max_length}
-    contents = reduce(lambda text, func: func(text, **kwargs), INITIAL_PARSERS, contents)
-    chunks = contents.split(CHUNKS_SEPARATOR)
-    chunks = reduce(lambda chunk, func: func(chunk, **kwargs), CHUNK_PARSERS, chunks)
+def split(contents: str, *, max_length: int, format: bool = True) -> list[str]:
+    contents = contents if not format else text(contents, options={"number": True})
+    chunks = safe_split_into_chunks(contents)
+    chunks = reduce(lambda c, f: f(c, max_length=max_length), CHUNK_PARSERS, chunks)
     return chunks
 
 
-if __name__ == "__main__":
-    main()
+def safe_split_into_chunks(contents: str) -> list[str]:
+    chunks = [""]
+    is_code_block = False
+    for line in contents.splitlines():
+        line = line.rstrip()
+        if match(r"^\s+", line) or not line:
+            # Part of a list, or an empty line.
+            chunks[-1] += linesep + line
+        elif line.startswith("```") and is_code_block:
+            # End of a code block.
+            chunks[-1] += linesep + line
+            is_code_block = False
+        elif line.startswith("```"):
+            # Start of a code block.
+            chunks.append(line)
+            is_code_block = True
+        elif is_code_block:
+            # Part of a code block.
+            chunks[-1] += linesep + line
+        else:
+            # Regular line.
+            chunks.append(line)
+    chunks = chunks if chunks[0] else chunks[1:]  # Remove leading empty chunk.
+    return chunks
