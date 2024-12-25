@@ -22,5 +22,5 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/Electronic-Mango/simple-markdown-splitter"
-Documentation = "https://github.com/Electronic-Mango/simple-markdown-splitter"
+Documentation = "https://electronic-mango.github.io/simple-markdown-splitter"
 Repository = "https://github.com/Electronic-Mango/simple-markdown-splitter"
