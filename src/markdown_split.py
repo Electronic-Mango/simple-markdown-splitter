@@ -33,7 +33,8 @@ def read_file() -> str:
         return file.read()
 
 
-def split(contents: str, **kwargs) -> list[str]:
+def split(contents: str, *, max_length: int) -> list[str]:
+    kwargs = {"max_length": max_length}
     contents = reduce(lambda text, func: func(text, **kwargs), INITIAL_PARSERS, contents)
     chunks = contents.split(CHUNKS_SEPARATOR)
     chunks = reduce(lambda chunk, func: func(chunk, **kwargs), CHUNK_PARSERS, chunks)

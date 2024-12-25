@@ -14,7 +14,7 @@ def rstrip_each_line(contents: str, **_) -> str:
 
 
 def truncate_line_separators(contents: str, **_) -> str:
-    return sub(f"{linesep}{linesep}+", CHUNKS_SEPARATOR, contents).strip()
+    return sub(f"{CHUNKS_SEPARATOR}+", CHUNKS_SEPARATOR, contents).strip()
 
 
 def strip_code_blocks(contents: str, **_) -> str:
