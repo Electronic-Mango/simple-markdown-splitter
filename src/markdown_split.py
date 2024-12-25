@@ -1,11 +1,8 @@
 from os import linesep
 from re import DOTALL, match
 
-from mdformat import text
 
-
-def split(contents: str, *, max_length: int, format: bool = True) -> list[str]:
-    contents = contents if not format else text(contents, options={"number": True})
+def split(contents: str, max_length: int) -> list[str]:
     chunks = split_into_chunks(contents)
     chunks = combine_chunks_to_match_max_length(chunks, max_length)
     chunks = split_too_long_code_block_chunks(chunks, max_length)
