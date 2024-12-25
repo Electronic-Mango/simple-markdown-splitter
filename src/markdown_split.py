@@ -1,19 +1,14 @@
-from functools import reduce
-from re import  match
+from os import linesep
+from re import DOTALL, match
 
 from mdformat import text
 
-from chunk_parsers import *
-
-CHUNK_PARSERS = [
-    combine_chunks_to_match_max_length,
-    split_too_long_code_block_chunks,
-]
 
 def split(contents: str, *, max_length: int, format: bool = True) -> list[str]:
     contents = contents if not format else text(contents, options={"number": True})
     chunks = safe_split_into_chunks(contents)
-    chunks = reduce(lambda c, f: f(c, max_length=max_length), CHUNK_PARSERS, chunks)
+    chunks = combine_chunks_to_match_max_length(chunks, max_length)
+    chunks = split_too_long_code_block_chunks(chunks, max_length)
     return chunks
 
 
@@ -41,3 +36,37 @@ def safe_split_into_chunks(contents: str) -> list[str]:
             chunks.append(line)
     chunks = chunks if chunks[0] else chunks[1:]  # Remove leading empty chunk.
     return chunks
+
+
+def combine_chunks_to_match_max_length(chunks: list[str], max_length: int) -> list[str]:
+    new_chunks = []
+    for chunk in chunks:
+        if new_chunks and (len(new_chunks[-1]) + len(chunk) + len(linesep)) <= max_length:
+            new_chunks[-1] += linesep + chunk
+        else:
+            new_chunks.append(chunk)
+    return new_chunks
+
+
+def split_too_long_code_block_chunks(chunks: list[str], max_length: int) -> list[str]:
+    if not any(len(chunk) > max_length for chunk in chunks):
+        return chunks
+    new_chunks = []
+    for chunk in chunks:
+        if len(chunk) <= max_length or not match(r"^```.+```$", chunk, flags=DOTALL):
+            new_chunks.append(chunk)
+        else:
+            new_chunks.extend(split_code_chunk(chunk, max_length))
+    return new_chunks
+
+
+def split_code_chunk(chunk: str, max_length: int) -> list[str]:
+    new_chunks = [""]
+    syntax_str = chunk.splitlines()[0]
+    for chunk in chunk.splitlines():
+        if len(new_chunks[-1]) + len(chunk) + (len(linesep) * 4) + len("```") <= max_length:
+            new_chunks[-1] += chunk + linesep
+        else:
+            new_chunks[-1] += "```" + linesep
+            new_chunks.append(f"{syntax_str}{linesep}{chunk}{linesep}")
+    return new_chunks
