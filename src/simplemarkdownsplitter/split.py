@@ -7,6 +7,15 @@ from re import DOTALL, match
 def split(contents: str, max_length: int, force: bool = False) -> list[str]:
     """
     Splits the given Markdown content into smaller chunks based on the specified maximum length.
+    Chunks can be:
+      - list entries - every paragraph in a list entry will be the same chunk
+      - code blocks
+      - paragraphs split with single newline characters
+
+    By default list entries are not split if they are exceeding the ``max_length`` argument.
+    Code blocks are split by lines, however by default too long lines aren't split.
+    You can force splitting by setting the ``force`` argument to ``True``, however this can break
+    Markdown formatting, as the chunks are simply truncated.
  
     Args:
         contents (str): The markdown content to be split.
