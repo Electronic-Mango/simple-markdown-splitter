@@ -52,7 +52,7 @@ def split_into_chunks(contents: str) -> list[str]:
                 # Start of a code block.
                 chunks.append(line)
         elif match(r"^\s+", line) or is_code_block or not line:
-            # Part of a list, paragraph, an empty line, or a code block.
+            # Part of a list, an empty line, or a code block.
             chunks[-1] += linesep + line
         else:
             # Regular line.
