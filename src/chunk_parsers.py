@@ -1,35 +1,7 @@
 from os import linesep
-from re import DOTALL, match, sub
+from re import DOTALL, match
 
-CHUNKS_SEPARATOR = 2 * linesep
-
-
-def main() -> None:
-    max_length = 700
-    markdown = read_file()
-    chunks = split(markdown, max_length=max_length)
-    print(CHUNKS_SEPARATOR.join(chunks))
-    print([len(chunk) for chunk in chunks])
-    print()
-
-
-def read_file() -> str:
-    with open("markdown_example.md", "r") as file:
-        return file.read()
-
-
-def split(markdown: str, **kwargs) -> list[str]:
-    markdown = prepare_markdown(markdown)
-    chunks = [chunk for chunk in markdown.split(CHUNKS_SEPARATOR)]
-    chunks = combine_multiparagraph_chunks(chunks, **kwargs)
-    chunks = combine_code_blocks(chunks, **kwargs)
-    chunks = combine_chunks_to_match_max_length(chunks, **kwargs)
-    chunks = split_too_long_code_block_chunks(chunks, **kwargs)
-    return chunks
-
-
-def prepare_markdown(contents: str) -> str:
-    return sub(rf"{linesep}{linesep}+", CHUNKS_SEPARATOR, contents.strip()).strip()
+from common import CHUNKS_SEPARATOR
 
 
 def combine_multiparagraph_chunks(chunks: list[str], **_) -> list[str]:
@@ -96,7 +68,3 @@ def split_too_long_code_block_chunks(chunks: list[str], **kwargs) -> list[str]:
                 code_block_chunks.append(f"{code_block_syntax}{linesep}{code_block_chunk.lstrip()}")
         new_chunks.extend(code_block_chunks)
     return new_chunks
-
-
-if __name__ == "__main__":
-    main()
