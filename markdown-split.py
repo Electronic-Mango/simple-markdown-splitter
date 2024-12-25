@@ -9,6 +9,8 @@ def main() -> None:
     markdown = read_file()
     chunks = split(markdown, max_length=max_length)
     print(CHUNKS_SEPARATOR.join(chunks))
+    print([len(chunk) for chunk in chunks])
+    print()
 
 
 def read_file() -> str:
@@ -78,6 +80,7 @@ def split_too_long_code_block_chunks(chunks: list[str], **kwargs) -> list[str]:
         # code_block_chunks = combine_chunks_to_match_max_length(code_block_chunks, max_length)
         # new_chunks.extend(code_block_chunks)
         code_block_chunks = []
+        code_block_syntax = chunk.splitlines()[0]
         for code_block_chunk in chunk.splitlines():
             if not code_block_chunks:
                 code_block_chunks.append(code_block_chunk)
@@ -91,7 +94,7 @@ def split_too_long_code_block_chunks(chunks: list[str], **kwargs) -> list[str]:
                 code_block_chunks[-1] += linesep + code_block_chunk
             else:
                 code_block_chunks[-1] += linesep + "```"
-                code_block_chunks.append(f"```{linesep}{code_block_chunk.lstrip()}")
+                code_block_chunks.append(f"{code_block_syntax}{linesep}{code_block_chunk.lstrip()}")
         new_chunks.extend(code_block_chunks)
     return new_chunks
 
