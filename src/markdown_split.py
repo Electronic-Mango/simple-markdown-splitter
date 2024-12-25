@@ -14,19 +14,16 @@ def split_into_chunks(contents: str) -> list[str]:
     is_code_block = False
     for line in contents.splitlines():
         line = line.rstrip()
-        if match(r"^\s+", line) or not line:
-            # Part of a list, or an empty line.
-            chunks[-1] += linesep + line
-        elif line.startswith("```") and is_code_block:
-            # End of a code block.
-            chunks[-1] += linesep + line
-            is_code_block = False
-        elif line.startswith("```"):
-            # Start of a code block.
-            chunks.append(line)
-            is_code_block = True
-        elif is_code_block:
-            # Part of a code block.
+        if line.startswith("```"):
+            is_code_block = not is_code_block
+            if is_code_block:
+                # End of a code block.
+                chunks[-1] += linesep + line
+            else:
+                # Start of a code block.
+                chunks.append(line)
+        elif match(r"^\s+", line) or is_code_block or not line:
+            # Part of a list, paragraph, an empty line, or a code block.
             chunks[-1] += linesep + line
         else:
             # Regular line.
@@ -60,10 +57,10 @@ def split_code_chunk(chunk: str, max_length: int) -> list[str]:
     new_chunks = [""]
     chunk_lines = chunk.splitlines()
     syntax_str = chunk_lines[0]
-    for chunk in chunk_lines:
-        if len(new_chunks[-1]) + len(chunk) + (len(linesep) * 4) + len("```") <= max_length:
-            new_chunks[-1] += chunk + linesep
+    for line in chunk_lines:
+        if len(new_chunks[-1]) + len(line) + (len(linesep) * 2) + len("```") <= max_length:
+            new_chunks[-1] += line + linesep
         else:
             new_chunks[-1] += "```" + linesep
-            new_chunks.append(f"{syntax_str}{linesep}{chunk}{linesep}")
+            new_chunks.append(f"{syntax_str}{linesep}{line}{linesep}")
     return new_chunks
