@@ -1,4 +1,3 @@
-
 from os import linesep
 from re import DOTALL, sub
 
@@ -18,4 +17,4 @@ def truncate_line_separators(contents: str, **_) -> str:
 
 
 def strip_code_blocks(contents: str, **_) -> str:
-    return sub(fr"(```.*?){CHUNKS_SEPARATOR}```", fr"\g<1>{linesep}```", contents, flags=DOTALL)
+    return sub(rf"(```.*?){CHUNKS_SEPARATOR}```", rf"\g<1>{linesep}```", contents, flags=DOTALL)
