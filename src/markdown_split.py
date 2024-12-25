@@ -2,10 +2,11 @@ from os import linesep
 from re import DOTALL, match
 
 
-def split(contents: str, max_length: int) -> list[str]:
+def split(contents: str, max_length: int, force: bool = False) -> list[str]:
     chunks = split_into_chunks(contents)
     chunks = combine_chunks_to_match_max_length(chunks, max_length)
     chunks = split_too_long_code_block_chunks(chunks, max_length)
+    chunks = force_split_too_long_chunks(chunks, max_length) if force else chunks
     return chunks
 
 
@@ -64,3 +65,11 @@ def split_code_chunk(chunk: str, max_length: int) -> list[str]:
             new_chunks[-1] += "```" + linesep
             new_chunks.append(f"{syntax_str}{linesep}{line}{linesep}")
     return new_chunks
+
+
+def force_split_too_long_chunks(chunks: list[str], max_length: int) -> list[str]:
+    return (
+        [c if len(c) <= max_length else c[: max_length - 3] + "..." for c in chunks]
+        if any(len(chunk) > max_length for chunk in chunks)
+        else chunks
+    )
