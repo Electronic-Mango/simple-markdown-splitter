@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Simple Markdown splitter documentation! &mdash; Simple Markdown splitter  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Simple Markdown splitter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Simple Markdown splitter documentation!</a><ul>
+<li><a class="reference internal" href="#module-simplemarkdownsplitter.split">simplemarkdownsplitter.split module</a><ul>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.combine_chunks_to_match_max_length"><code class="docutils literal notranslate"><span class="pre">combine_chunks_to_match_max_length()</span></code></a></li>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.force_split_too_long_chunks"><code class="docutils literal notranslate"><span class="pre">force_split_too_long_chunks()</span></code></a></li>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.split_code_chunk"><code class="docutils literal notranslate"><span class="pre">split_code_chunk()</span></code></a></li>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.split_into_chunks"><code class="docutils literal notranslate"><span class="pre">split_into_chunks()</span></code></a></li>
+<li><a class="reference internal" href="#simplemarkdownsplitter.split.split_too_long_code_block_chunks"><code class="docutils literal notranslate"><span class="pre">split_too_long_code_block_chunks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Simple Markdown splitter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Simple Markdown splitter documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-simple-markdown-splitter-documentation">
+<h1>Welcome to Simple Markdown splitter documentation!<a class="headerlink" href="#welcome-to-simple-markdown-splitter-documentation" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="module-simplemarkdownsplitter.split">
+<span id="simplemarkdownsplitter-split-module"></span><h2>simplemarkdownsplitter.split module<a class="headerlink" href="#module-simplemarkdownsplitter.split" title="Link to this heading"></a></h2>
+<p>Main module for splitting Markdown content into smaller chunks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.combine_chunks_to_match_max_length">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">combine_chunks_to_match_max_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#combine_chunks_to_match_max_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.combine_chunks_to_match_max_length" title="Link to this definition"></a></dt>
+<dd><p>Combine multiple chunks into one, if their combined length fits in the specified maximum length.
+Chunks already bigger than the maximum length are not modified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of markdown content chunks.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – The maximum length of each chunk.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of combined markdown content chunks, if possible.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.force_split_too_long_chunks">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">force_split_too_long_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#force_split_too_long_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.force_split_too_long_chunks" title="Link to this definition"></a></dt>
+<dd><p>Force split too long chunks into smaller chunks, if they exceed the maximum length.
+Too long chunks are simply truncated to max length, with ‘…’ at the end,
+so markdown formatting might be broken.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of markdown content chunks.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – The maximum length of each chunk.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of markdown content chunks, with forced truncated chunks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.split">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.split" title="Link to this definition"></a></dt>
+<dd><p>Splits the given Markdown content into smaller chunks based on the specified maximum length.
+Chunks can be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>list entries - every paragraph in a list entry will be the same chunk</p></li>
+<li><p>code blocks</p></li>
+<li><p>paragraphs split with single newline characters</p></li>
+</ul>
+</div></blockquote>
+<p>By default list entries are not split if they are exceeding the <code class="docutils literal notranslate"><span class="pre">max_length</span></code> argument.
+Code blocks are split by lines, however by default too long lines aren’t split.
+You can force splitting by setting the <code class="docutils literal notranslate"><span class="pre">force</span></code> argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>, however this can break
+Markdown formatting, as the chunks are simply truncated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contents</strong> (<em>str</em>) – The markdown content to be split.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – The maximum length of each chunk.</p></li>
+<li><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, forces the splitting of chunks that exceed the maximum
+length. Can break formatting between chunks. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of markdown content chunks, each with a length up to <code class="docutils literal notranslate"><span class="pre">max_length</span></code>.</dt><dd><p>If force is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> (or default), chunks might be longer, if there’s
+no natural way of breaking them up.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.split_code_chunk">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">split_code_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#split_code_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.split_code_chunk" title="Link to this definition"></a></dt>
+<dd><p>Split single code block chunk into smaller chunks, if it exceeds the maximum length.
+Code blocks are identified by triple backticks at the start and end of the block.
+Code syntax should be preserved.
+Too long code blocks are split by lines. It’s possible, that chunks are still to long,
+if a single line is longer than the maximum length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A markdown code block to split.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – The maximum length of each chunk.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of shortened code block chunks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.split_into_chunks">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">split_into_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#split_into_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.split_into_chunks" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Split Markdown content into chunks, e.g.:</dt><dd><ul class="simple">
+<li><p>list entries</p></li>
+<li><p>code blocks</p></li>
+<li><p>paragraphs split with single newline characters</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>contents</strong> (<em>str</em>) – The markdown content to be split.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of markdown content chunks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplemarkdownsplitter.split.split_too_long_code_block_chunks">
+<span class="sig-prename descclassname"><span class="pre">simplemarkdownsplitter.split.</span></span><span class="sig-name descname"><span class="pre">split_too_long_code_block_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/simplemarkdownsplitter/split.html#split_too_long_code_block_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplemarkdownsplitter.split.split_too_long_code_block_chunks" title="Link to this definition"></a></dt>
+<dd><p>Split code block chunks that exceed the maximum length into smaller chunks.
+Code blocks are identified by triple backticks at the start and end of the block.
+Code syntax should be preserved.
+Too long code blocks are split by lines. It’s possible, that chunks are still to long,
+if a single line is longer than the maximum length.</p>
+<p>If no chunks exceed the maximum length, the original list is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of markdown content chunks.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – The maximum length of each chunk.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of markdown content chunks, with shortened code blocks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Electronic Mango.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
