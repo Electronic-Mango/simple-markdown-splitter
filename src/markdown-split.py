@@ -18,7 +18,6 @@ def read_file() -> str:
         return file.read()
 
 
-
 def split(markdown: str, **kwargs) -> list[str]:
     markdown = prepare_markdown(markdown)
     chunks = [chunk for chunk in markdown.split(CHUNKS_SEPARATOR)]
@@ -27,7 +26,6 @@ def split(markdown: str, **kwargs) -> list[str]:
     chunks = combine_chunks_to_match_max_length(chunks, **kwargs)
     chunks = split_too_long_code_block_chunks(chunks, **kwargs)
     return chunks
-
 
 
 def prepare_markdown(contents: str) -> str:
@@ -60,9 +58,10 @@ def combine_code_blocks(chunks: list[str], **_) -> list[str]:
 
 
 def combine_chunks_to_match_max_length(chunks: list[str], **kwargs) -> list[str]:
+    max_length = kwargs.get("max_length")
     new_chunks = []
     for chunk in chunks:
-        if new_chunks and (len(new_chunks[-1]) + len(chunk) + len(CHUNKS_SEPARATOR)) <= kwargs.get("max_length"):
+        if new_chunks and (len(new_chunks[-1]) + len(chunk) + len(CHUNKS_SEPARATOR)) <= max_length:
             new_chunks[-1] += CHUNKS_SEPARATOR + chunk
         else:
             new_chunks.append(chunk)
@@ -101,4 +100,3 @@ def split_too_long_code_block_chunks(chunks: list[str], **kwargs) -> list[str]:
 
 if __name__ == "__main__":
     main()
-
